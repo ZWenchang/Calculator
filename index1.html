@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <style>
+      #calculator {
+        width: 300px;
+        height: 400px;
+        margin: auto;
+        background-color: #f1f1f1;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+        font-family: sans-serif;
+        font-size: 20px;
+      }
+
+      #result {
+        width: 100%;
+        height: 60px;
+        font-size: 30px;
+        text-align: right;
+        padding-right: 10px;
+        margin-bottom: 20px;
+      }
+
+      .button {
+        width: 60px;
+        height: 60px;
+        margin: 5px;
+        border-radius: 50%;
+        border: none;
+        font-size: 20px;
+        color: #fff;
+        background-color: #4caf50;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+      }
+
+      .button:hover {
+        background-color: #3e8e41;
+      }
+
+      .button.clear {
+        background-color: #f44336;
+      }
+
+      .button.clear:hover {
+        background-color: #c62828;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="calculator">
+      <div id="result"></div>
+      <button class="button" onclick="enterDigit(7)">7</button>
+      <button class="button" onclick="enterDigit(8)">8</button>
+      <button class="button" onclick="enterDigit(9)">9</button>
+      <button class="button" onclick="setOperator('+')">+</button>
+      <br>
+      <button class="button" onclick="enterDigit(4)">4</button>
+      <button class="button" onclick="enterDigit(5)">5</button>
+      <button class="button" onclick="enterDigit(6)">6</button>
+      <button class="button" onclick="setOperator('-')">-</button>
+      <br>
+      <button class="button" onclick="enterDigit(1)">1</button>
+      <button class="button" onclick="enterDigit(2)">2</button>
+      <button class="button" onclick="enterDigit(3)">3</button>
+      <button class="button" onclick="setOperator('*')">*</button>
+      <br>
+      <button class="button" onclick="enterDigit(0)">0</button>
+      <button class="button" onclick="clear()" class="clear">C</button>
+      <button class="button" onclick="calculate()">=</button>
+      <button class="button" onclick="setOperator('/')">/</button>
+    </div>
+
+    <script>
+      function createCalculator() {
+        let result = 0;
+        let operand = 0;
+        let operator = null;
+
+        function clear() {
+          result = 0;
+          operand = 0;
+          operator = null;
+          updateResult();
+        }
+
+        function setOperator(newOperator) {
+          operator = newOperator;
+          result = operand;
+          operand = 0;
+          updateResult();
+        }
+
+        function getResult() {
+          return result;
+        }
+
+        function enterDigit(digit)
